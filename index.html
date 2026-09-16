@@ -371,9 +371,10 @@ execute({ description }) {
               </div>
             </div>
 
-            <button onclick="copyDassiCommand()" id="dassi-cmd-btn" class="w-full py-3 rounded-xl bg-white text-black hover:bg-[#e5e5ea] transition text-xs font-semibold shadow-lg flex items-center justify-center gap-2">
+            <a href="https://dassi.ai/?utm_source=getwebmcp&utm_medium=referral&utm_campaign=webmcp_adoption" target="_blank" id="dassi-cmd-btn" class="w-full py-3 rounded-xl bg-white text-black hover:bg-[#e5e5ea] transition text-xs font-semibold shadow-lg flex items-center justify-center gap-2">
               <span>⚡ Setup WebMCP with Dassi AI</span>
-            </button>
+              <span class="text-[#86868b] text-[10px]">↗</span>
+            </a>
           </div>
 
           <div class="mt-8 pt-4 border-t border-white/[0.06] text-xs text-[#86868b] flex items-center justify-between">
@@ -804,15 +805,7 @@ if (typeof document !== 'undefined' && !document.modelContext) {
       }
     }
 
-    function copyDassiCommand() {
-      const cmd = "Dassi, inspect this website and setup WebMCP tools for all interactive actions.";
-      navigator.clipboard.writeText(cmd);
-      const btn = document.getElementById('dassi-cmd-btn');
-      if (btn) {
-        btn.innerHTML = '<span>✓ Copied Dassi Prompt!</span>';
-        setTimeout(() => { btn.innerHTML = '<span>⚡ Setup WebMCP with Dassi AI</span>'; }, 2500);
-      }
-    }
+        }
 
     function switchTab(tab) {
       document.querySelectorAll('#quickstart button[id^="tab-"]').forEach(b => {
