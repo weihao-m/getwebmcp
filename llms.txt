@@ -1,0 +1,16 @@
+# GetWebMCP
+> The Developer Adoption Hub for W3C WebMCP (document.modelContext).
+
+- Website: https://getwebmcp.dev/
+- GitHub Repository: https://github.com/weihao-m/getwebmcp
+- W3C Specification: https://github.com/webmachinelearning/webmcp
+- Coding Agent Guide: https://getwebmcp.dev/agent.md
+
+## Core APIs
+- document.modelContext.registerTool({ name, description, inputSchema, execute })
+- document.modelContext.getTools()
+- document.modelContext.executeTool(tool, args)
+- document.addEventListener('toolchange', callback)
+
+## 1-Line Setup Prompt for AI Agents
+"Read https://getwebmcp.dev/agent.md and implement WebMCP tools for this codebase."
