@@ -9,6 +9,7 @@
   <meta name="description" content="The definitive adoption guide for WebMCP (W3C Web Machine Learning Working Group). Learn how to declare native AI agent tools on any website using document.modelContext.">
   <meta name="keywords" content="webmcp, web mcp, webmachinelearning, w3c webmcp, document.modelcontext, model context protocol web, adopt webmcp, ai browser agents, webmcp tutorial">
   <link rel="canonical" href="https://getwebmcp.dev/">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -23,7 +24,7 @@
   <meta property="twitter:title" content="GetWebMCP — The Standard Adoption Guide for WebMCP (W3C)">
   <meta property="twitter:description" content="Turn any website into a native AI agent tool with document.modelContext. Complete quickstart, polyfill, and validator.">
 
-  <!-- Schema.org JSON-LD -->
+    <!-- Comprehensive Schema.org JSON-LD for Google Rich Results & AI Search -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -36,21 +37,77 @@
         "description": "The Developer Adoption Guide for W3C WebMCP (document.modelContext).",
         "publisher": {
           "@type": "Organization",
-          "name": "WebMCP Adoption Community",
+          "name": "WebMCP Community",
           "url": "https://getwebmcp.dev"
         }
       },
       {
         "@type": "TechArticle",
         "@id": "https://getwebmcp.dev/#article",
-        "headline": "How to Adopt WebMCP (document.modelContext) in 5 Minutes",
-        "description": "Step-by-step developer tutorial to declare client-side tools for browser AI agents using the W3C WebMCP standard.",
+        "headline": "How to Adopt WebMCP (document.modelContext) on Your Website",
+        "description": "Comprehensive tutorial to declare client-side tools for AI browser agents using the W3C WebMCP standard.",
         "author": {
           "@type": "Organization",
           "name": "WebMCP Community"
         },
         "datePublished": "2026-09-16",
         "dateModified": "2026-09-16"
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://getwebmcp.dev/#howto",
+        "name": "How to Implement W3C WebMCP on Any Web Application",
+        "description": "Expose client-side tools to AI browser agents like Dassi AI, Claude, and Chrome AI in three simple steps.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Initialize document.modelContext",
+            "text": "Call document.modelContext.registerTool with tool name, natural language description, and JSON Schema parameters."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Implement the execute Handler",
+            "text": "Write the asynchronous execute callback that runs your native front-end logic and updates page UI state."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Manage Lifecycle with AbortSignal",
+            "text": "Pass an AbortSignal to cleanly unregister tools when page navigation or modal states change."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://getwebmcp.dev/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is WebMCP?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "WebMCP is an official web platform standard proposal authored by Microsoft and Google under the W3C Web Machine Learning Working Group. It introduces document.modelContext to let web pages expose client-side tools directly to AI browser agents."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does WebMCP differ from server-side Model Context Protocol?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Server MCP connects AI models to backend databases and local servers. WebMCP runs inside the active browser document, preserving user authentication, cookies, and live front-end application state."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can AI browser agents like Dassi AI adopt WebMCP?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AI browser agents discover registered tools via document.modelContext.getTools() and invoke them in sub-5ms with document.modelContext.executeTool(), eliminating brittle DOM scraping and visual coordinate clicks."
+            }
+          }
+        ]
       }
     ]
   }
