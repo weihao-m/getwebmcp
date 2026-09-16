@@ -25,93 +25,29 @@ External Model Context Protocol (MCP) integrations connect AI models directly to
 
 ---
 
-## 🚀 5-Minute Quickstart
+## 🛠️ The Two Real Ways to Setup WebMCP
 
-### 1. Register a Tool (`document.modelContext.registerTool`)
+Modern web applications use dynamic state, component frameworks, and client routers. WebMCP provides two practical paths for adoption:
 
-```javascript
-const controller = new AbortController();
+### Method 1: The 1-Line Coding Agent Setup (For Git Codebases)
+Give this instruction to your AI coding assistant (**Cursor**, **Claude Code**, **Copilot**, or **Aider**):
 
-await document.modelContext.registerTool({
-  name: "search-products",
-  description: "Search in-stock products by query and price filters",
-  inputSchema: {
-    type: "object",
-    properties: {
-      query: { type: "string", description: "Search keyword" },
-      maxPrice: { type: "number", description: "Maximum price in USD" }
-    },
-    required: ["query"]
-  },
-  async execute({ query, maxPrice }) {
-    const results = await app.catalog.search({ query, maxPrice });
-    return {
-      content: [{ type: "text", text: JSON.stringify(results) }]
-    };
-  }
-}, { signal: controller.signal });
-
-// To unregister dynamically when page state changes:
-// controller.abort();
+```text
+Read https://getwebmcp.dev/agent.md and implement WebMCP for this codebase
 ```
 
-### 2. React / Next.js Hook
-
-```javascript
-import { useEffect } from 'react';
-
-export function useWebMCPTool(toolDefinition) {
-  useEffect(() => {
-    if (typeof document === 'undefined' || !document.modelContext) return;
-    
-    const controller = new AbortController();
-    document.modelContext.registerTool(toolDefinition, { signal: controller.signal });
-
-    return () => controller.abort();
-  }, [toolDefinition]);
-}
-```
-
-### 3. Universal Polyfill
-
-For browsers that do not yet have `document.modelContext` natively built-in:
-
-```javascript
-if (typeof document !== 'undefined' && !document.modelContext) {
-  document.modelContext = {
-    _tools: new Map(),
-    async registerTool(tool, options = {}) {
-      this._tools.set(tool.name, tool);
-      if (options.signal) {
-        options.signal.addEventListener('abort', () => this._tools.delete(tool.name));
-      }
-      document.dispatchEvent(new CustomEvent('toolchange'));
-    },
-    async getTools() {
-      return Array.from(this._tools.values());
-    },
-    async executeTool(tool, args) {
-      return await tool.execute(args);
-    }
-  };
-}
-```
+The agent reads the W3C specification guide at [https://getwebmcp.dev/agent.md](https://getwebmcp.dev/agent.md), inspects your project components, and registers native `document.modelContext.registerTool()` handlers tailored to your actual application logic.
 
 ---
 
-## 🤖 Supported by Leading AI Browser Agents
-
-WebMCP is supported out-of-the-box by modern browser agent runtimes:
-
-- **Dassi AI:** Built-in `tool.webmcp` engine that discovers and invokes `document.modelContext` tools in under 5ms with zero DOM scraping.
-- **Claude Desktop:** MCP client integration for local agent-driven web actuation.
-- **W3C WebML Working Group:** Standard proposal led by Google and Microsoft engineers.
-
-### ⚡ Adopt with Dassi in Seconds
-You can ask Dassi directly:
-> *"Dassi, analyze my website at https://mysite.com and generate the W3C WebMCP tool declarations for it."*
-
-Dassi will audit your page elements, forms, and state, and output production-ready `document.modelContext.registerTool()` code.
+### Method 2: 1-Click Setup with Dassi AI (For Live Sites & Non-Git)
+For live websites (WordPress, Shopify, Webflow, custom apps):
+1. Open your website in Chrome with **Dassi AI**.
+2. Instruct Dassi:
+   > *"Dassi, inspect this website and setup WebMCP tools for all interactive actions."*
+3. Dassi audits your live UI, tests actions, and either:
+   - Opens a ready-to-merge GitHub Pull Request for your repository, or
+   - Injects a tailored browser adapter for non-git sites so AI agents can call tools directly.
 
 ---
 

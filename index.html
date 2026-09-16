@@ -302,90 +302,86 @@ execute({ description }) {
     </div>
   </header>
 
-  <!-- 1-Line Coding Agent & Non-Git 1-Click Setup Section -->
-  <section id="instant-setup" class="py-20 border-t border-white/[0.08] bg-[#050505]">
+    <!-- The 2 Real Ways to Adopt WebMCP Section -->
+  <section id="instant-setup" class="py-24 border-t border-white/[0.08] bg-[#050505]">
     <div class="max-w-5xl mx-auto px-6">
       
       <div class="text-center max-w-2xl mx-auto mb-16">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[#86868b] mb-3">Zero Friction Adoption</p>
+        <p class="text-xs font-semibold uppercase tracking-widest text-[#86868b] mb-3">Real-World Adoption</p>
         <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-          1-Line Setup. For Any Site.
+          Two Ways to Setup WebMCP.
         </h2>
         <p class="text-base text-[#86868b]">
-          Whether you use AI coding assistants or manage a non-git live website, adopting WebMCP takes literally one click.
+          Modern web applications rely on complex state, dynamic frameworks, and client routers. Here are the two proven ways to adapt your website properly:
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         
-        <!-- Card 1: For Coding Agents -->
+        <!-- Method 1: Coding Agent -->
         <div class="glass-card p-8 border border-white/[0.12] flex flex-col justify-between relative overflow-hidden">
           <div class="absolute -top-12 -right-12 w-28 h-28 bg-purple-500/10 rounded-full blur-2xl"></div>
           <div>
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.06] border border-white/[0.1] text-xs font-semibold text-purple-300 mb-6">
-              <span>Cursor • Claude Code • Copilot • Windsurf</span>
+              <span>Method 1 • For Codebases & Git Repos</span>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">1-Line for Coding Agents.</h3>
+            <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">The 1-Line Coding Agent Setup.</h3>
             <p class="text-sm text-[#86868b] leading-relaxed mb-6">
-              Paste this one instruction into Cursor, Claude Code, or Aider. Your agent reads the specification and automatically generates all WebMCP tool handlers for your repository:
+              Have <strong>Cursor</strong>, <strong>Claude Code</strong>, <strong>GitHub Copilot</strong>, or <strong>Aider</strong>? Paste this instruction into your coding agent. It audits your actual components and writes production-ready WebMCP tool handlers into your codebase:
             </p>
 
-            <div class="bg-black/80 p-4 rounded-xl border border-white/[0.1] text-xs code-font text-[#2997ff] flex items-center justify-between gap-3 shadow-inner">
+            <div class="bg-black/80 p-4 rounded-xl border border-white/[0.1] text-xs code-font text-[#2997ff] flex items-center justify-between gap-3 shadow-inner mb-4">
               <span id="agent-prompt" class="select-all">Read https://getwebmcp.dev/agent.md and implement WebMCP for this codebase</span>
               <button onclick="copyPrompt('agent-prompt')" id="agent-prompt-btn" class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white text-white hover:text-black transition text-[11px] font-medium shrink-0">
                 Copy
               </button>
             </div>
+            
+            <p class="text-xs text-[#86868b] leading-relaxed">
+              Your coding agent reads the W3C spec rules at <a href="/agent.md" target="_blank" class="text-white underline">agent.md</a>, identifies your search, filters, and mutations, and wires up native <code class="text-white">document.modelContext.registerTool()</code> handlers.
+            </p>
           </div>
 
           <div class="mt-8 pt-4 border-t border-white/[0.06] text-xs text-[#86868b] flex items-center justify-between">
-            <span>Machine-readable spec: <a href="/agent.md" target="_blank" class="text-white underline">agent.md</a></span>
-            <span class="text-purple-400">100% Automated</span>
+            <span>Machine Spec: <a href="/agent.md" target="_blank" class="text-white underline">agent.md</a></span>
+            <span class="text-purple-400 font-medium">Native Code Implementation</span>
           </div>
         </div>
 
-        <!-- Card 2: For Non-Git Sites with Dassi AI -->
+        <!-- Method 2: Dassi AI -->
         <div class="glass-card p-8 border border-white/[0.12] flex flex-col justify-between relative overflow-hidden">
           <div class="absolute -top-12 -right-12 w-28 h-28 bg-[#2997ff]/10 rounded-full blur-2xl"></div>
           <div>
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.06] border border-white/[0.1] text-xs font-semibold text-sky-300 mb-6">
-              <span>WordPress • Shopify • Webflow • Custom Sites</span>
+              <span>Method 2 • For Live Sites & Non-Git</span>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">1-Click for Non-Git Sites.</h3>
+            <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">1-Click Setup with Dassi AI.</h3>
             <p class="text-sm text-[#86868b] leading-relaxed mb-6">
-              Don't have a git repository? Drop in our universal auto-adapter script tag. It automatically turns your page forms, search inputs, and filters into callable WebMCP tools:
+              Have a live website (WordPress, Shopify, Webflow, custom SaaS) or want zero manual coding? <strong>Dassi AI</strong> inspects your live web page, audits interactive workflows, and configures WebMCP tools for you automatically:
             </p>
 
-            <div class="bg-black/80 p-4 rounded-xl border border-white/[0.1] text-xs code-font text-emerald-400 flex items-center justify-between gap-3 shadow-inner">
-              <span id="script-tag" class="select-all">&lt;script src="https://getwebmcp.dev/webmcp.js"&gt;&lt;/script&gt;</span>
-              <button onclick="copyPrompt('script-tag')" id="script-tag-btn" class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white text-white hover:text-black transition text-[11px] font-medium shrink-0">
-                Copy
-              </button>
+            <div class="space-y-3 mb-6">
+              <div class="p-3 bg-black/60 rounded-xl border border-white/[0.06] text-xs text-[#d1d1d6] flex items-start gap-2.5">
+                <span class="text-[#2997ff] mt-0.5">●</span>
+                <span><strong>For Git Codebases:</strong> Dassi audits your React/Next.js repo and opens a ready-to-merge Pull Request.</span>
+              </div>
+              <div class="p-3 bg-black/60 rounded-xl border border-white/[0.06] text-xs text-[#d1d1d6] flex items-start gap-2.5">
+                <span class="text-[#2997ff] mt-0.5">●</span>
+                <span><strong>For Non-Git Sites:</strong> Dassi synthesizes a tailored browser adapter so AI agents can actuate the site immediately.</span>
+              </div>
             </div>
+
+            <button onclick="copyDassiCommand()" id="dassi-cmd-btn" class="w-full py-3 rounded-xl bg-white text-black hover:bg-[#e5e5ea] transition text-xs font-semibold shadow-lg flex items-center justify-center gap-2">
+              <span>⚡ Setup WebMCP with Dassi AI</span>
+            </button>
           </div>
 
           <div class="mt-8 pt-4 border-t border-white/[0.06] text-xs text-[#86868b] flex items-center justify-between">
-            <span>Instant declarative tools</span>
-            <span class="text-emerald-400">No Git Required</span>
+            <span>Zero-code live inspection</span>
+            <span class="text-sky-400 font-medium">1-Click Automation</span>
           </div>
         </div>
 
-      </div>
-
-      <!-- Dassi AI 1-Click Assistant Callout -->
-      <div class="mt-12 glass-card p-6 sm:p-8 border border-white/[0.12] flex flex-col sm:flex-row items-center justify-between gap-6 text-left">
-        <div class="space-y-1">
-          <h4 class="text-lg font-bold text-white tracking-tight flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-[#2997ff] animate-pulse"></span>
-            Have Dassi AI set it up for you?
-          </h4>
-          <p class="text-xs text-[#86868b]">
-            Dassi AI can inspect any live website or GitHub repository and configure WebMCP in one click.
-          </p>
-        </div>
-        <button onclick="copyDassiCommand()" id="dassi-cmd-btn" class="px-5 py-2.5 rounded-full bg-white text-black hover:bg-[#e5e5ea] transition text-xs font-semibold shrink-0 shadow-lg flex items-center gap-2">
-          <span>⚡ Setup WebMCP with Dassi AI</span>
-        </button>
       </div>
 
     </div>
