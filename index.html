@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>WebMCP — Model Context Protocol, Native to the Web</title>
+  <meta name="title" content="WebMCP — Model Context Protocol, Native to the Web">
+  <meta name="description" content="WebMCP brings the Model Context Protocol directly into the browser. Declare native tools on any web application for AI agents with unmatched speed, privacy, and simplicity.">
+  <meta name="keywords" content="webmcp, web mcp, model context protocol web, adopt webmcp, apple intelligence web, ai browser agents, page declared tools">
+  <link rel="canonical" href="https://getwebmcp.dev/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://getwebmcp.dev/">
+  <meta property="og:title" content="WebMCP — Model Context Protocol, Native to the Web">
+  <meta property="og:description" content="Declare native tools on any web application for AI agents. Built for the modern web.">
+  <meta property="og:image" content="https://getwebmcp.dev/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://getwebmcp.dev/">
+  <meta property="twitter:title" content="WebMCP — Model Context Protocol, Native to the Web">
+  <meta property="twitter:description" content="Declare native tools on any web application for AI agents. Built for the modern web.">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://getwebmcp.dev/#website",
+        "url": "https://getwebmcp.dev/",
+        "name": "WebMCP",
+        "description": "Model Context Protocol for Web Applications and AI Browser Agents.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "WebMCP Community",
+          "url": "https://getwebmcp.dev"
+        }
+      },
+      {
+        "@type": "TechArticle",
+        "@id": "https://getwebmcp.dev/#article",
+        "headline": "WebMCP Specification & Adoption Guide",
+        "description": "How to implement client-side Model Context Protocol tools in web applications.",
+        "author": {
+          "@type": "Organization",
+          "name": "WebMCP Community"
+        },
+        "datePublished": "2026-09-16",
+        "dateModified": "2026-09-16"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            apple: {
+              black: '#000000',
+              card: '#161617',
+              cardLight: '#1c1c1e',
+              border: 'rgba(255, 255, 255, 0.08)',
+              borderHover: 'rgba(255, 255, 255, 0.2)',
+              text: '#f5f5f7',
+              subtext: '#86868b',
+              blue: '#2997ff',
+              blueHover: '#147ce5',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Inter", sans-serif;
+      background-color: #000000;
+      color: #f5f5f7;
+      letter-spacing: -0.015em;
+    }
+    
+    .apple-glow {
+      background: radial-gradient(circle at 50% 0%, rgba(120, 119, 198, 0.18) 0%, rgba(0, 0, 0, 0) 70%);
+    }
+
+    .apple-intelligence-glow {
+      background: conic-gradient(from 180deg at 50% 50%, #f59e0b 0deg, #ec4899 90deg, #8b5cf6 180deg, #3b82f6 270deg, #f59e0b 360deg);
+      filter: blur(28px);
+      opacity: 0.28;
+    }
+
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-card {
+      background: #121214;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 28px;
+    }
+
+    .titanium-gradient {
+      background: linear-gradient(180deg, #ffffff 20%, #9ca3af 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .code-font {
+      font-family: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    }
+  </style>
+</head>
+<body class="bg-black text-[#f5f5f7] antialiased selection:bg-[#2997ff] selection:text-white">
+
+  <!-- Apple Global Navigation Bar -->
+  <nav class="fixed top-0 inset-x-0 h-12 z-50 bg-black/80 backdrop-blur-xl border-b border-white/[0.08] flex items-center justify-between px-6 max-w-6xl mx-auto md:px-8">
+    <div class="flex items-center space-x-6">
+      <a href="#" class="flex items-center gap-2 text-white font-semibold text-sm tracking-tight hover:opacity-90 transition">
+        <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <span>WebMCP</span>
+      </a>
+      <div class="hidden md:flex items-center space-x-6 text-xs text-[#86868b] font-normal">
+        <a href="#overview" class="hover:text-white transition">Overview</a>
+        <a href="#protocol" class="hover:text-white transition">Protocol</a>
+        <a href="#quickstart" class="hover:text-white transition">Adoption</a>
+        <a href="#inspector" class="hover:text-white transition">Inspector</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+      </div>
+    </div>
+    <div class="flex items-center space-x-4">
+      <a href="#quickstart" class="text-xs font-medium px-3.5 py-1.5 rounded-full bg-white text-black hover:bg-[#e5e5ea] transition shadow-sm">
+        Adopt Now
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="overview" class="relative pt-32 pb-24 md:pt-44 md:pb-36 overflow-hidden apple-glow text-center">
+    <div class="max-w-4xl mx-auto px-6">
+      
+      <!-- Pill Tag -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill text-xs font-medium text-[#f5f5f7] mb-8">
+        <span class="w-2 h-2 rounded-full bg-[#2997ff] shadow-[0_0_8px_#2997ff]"></span>
+        <span>The Standard for AI Agent Tool Calling</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight titanium-gradient mb-6 leading-none">
+        WebMCP.
+      </h1>
+      
+      <p class="text-2xl sm:text-3xl md:text-4xl font-medium text-[#f5f5f7] tracking-tight mb-6">
+        Intelligence. Native to every website.
+      </p>
+
+      <p class="text-base sm:text-lg md:text-xl text-[#86868b] max-w-2xl mx-auto font-normal leading-relaxed mb-12">
+        The open protocol allowing web applications to declare callable tools directly to AI browser agents. Instant execution. Zero scraping. Complete user privacy.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm font-medium">
+        <a href="#quickstart" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white text-black hover:bg-[#e5e5ea] transition shadow-lg">
+          Add WebMCP in 5 Minutes
+        </a>
+        <a href="#inspector" class="w-full sm:w-auto px-7 py-3.5 rounded-full glass-pill text-[#f5f5f7] hover:bg-white/10 transition flex items-center justify-center gap-1.5">
+          <span>Launch Inspector</span>
+          <span class="text-xs text-[#86868b]">›</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Mockup: VisionOS / Apple Intelligence Style Floating Console -->
+    <div class="mt-20 max-w-4xl mx-auto px-4 relative">
+      <div class="absolute inset-0 apple-intelligence-glow rounded-3xl"></div>
+      
+      <div class="relative glass-card border border-white/[0.12] p-6 sm:p-8 shadow-2xl backdrop-blur-2xl text-left">
+        <div class="flex items-center justify-between border-b border-white/[0.08] pb-4 mb-6">
+          <div class="flex items-center space-x-2">
+            <div class="w-3 h-3 rounded-full bg-[#ff5f57]/80"></div>
+            <div class="w-3 h-3 rounded-full bg-[#febc2e]/80"></div>
+            <div class="w-3 h-3 rounded-full bg-[#28c840]/80"></div>
+            <span class="ml-3 text-xs text-[#86868b] font-mono">browser.agent.callTool("flight_search")</span>
+          </div>
+          <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">
+            200 OK • 12ms
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 code-font text-xs">
+          <!-- Left: Agent Request -->
+          <div class="space-y-2">
+            <p class="text-[11px] uppercase tracking-wider text-[#86868b] font-sans font-semibold">AI Agent Request</p>
+            <div class="bg-black/60 rounded-xl p-4 border border-white/[0.06] text-[#a1a1a6] leading-relaxed">
+<pre><code>{
+  <span class="text-[#2997ff]">"tool"</span>: <span class="text-emerald-300">"search_flights"</span>,
+  <span class="text-[#2997ff]">"arguments"</span>: {
+    <span class="text-[#2997ff]">"destination"</span>: <span class="text-amber-200">"HND"</span>,
+    <span class="text-[#2997ff]">"cabin"</span>: <span class="text-amber-200">"first_class"</span>,
+    <span class="text-[#2997ff]">"passengers"</span>: <span class="text-purple-300">1</span>
+  }
+}</code></pre>
+            </div>
+          </div>
+
+          <!-- Right: Webpage Result -->
+          <div class="space-y-2">
+            <p class="text-[11px] uppercase tracking-wider text-[#86868b] font-sans font-semibold">Native Website Response</p>
+            <div class="bg-black/60 rounded-xl p-4 border border-white/[0.06] text-[#a1a1a6] leading-relaxed">
+<pre><code>{
+  <span class="text-[#2997ff]">"status"</span>: <span class="text-emerald-300">"success"</span>,
+  <span class="text-[#2997ff]">"auth"</span>: <span class="text-amber-200">"session_validated"</span>,
+  <span class="text-[#2997ff]">"flights"</span>: [
+    { <span class="text-[#2997ff]">"flight"</span>: <span class="text-amber-200">"JL001"</span>, <span class="text-[#2997ff]">"price"</span>: <span class="text-purple-300">4200</span> }
+  ],
+  <span class="text-[#2997ff]">"actionReady"</span>: <span class="text-emerald-400">true</span>
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Bento Grid: The Pillars of WebMCP -->
+  <section id="protocol" class="py-24 border-t border-white/[0.08] bg-[#050505]">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[#86868b] mb-3">Architected for Elegance</p>
+        <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+          Everything an agent needs.<br>Nothing it doesn't.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Bento Card 1 -->
+        <div class="glass-card p-8 flex flex-col justify-between hover:border-white/[0.2] transition duration-300">
+          <div>
+            <div class="w-10 h-10 rounded-2xl bg-white/[0.06] border border-white/[0.1] flex items-center justify-center text-lg mb-6">
+              ⌘
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">Zero Scraping.</h3>
+            <p class="text-sm text-[#86868b] leading-relaxed">
+              No fragile DOM selectors. No brittle vision coordinates. Agents call typed JavaScript functions that directly invoke your application logic.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-[#86868b] font-mono">
+            99.9% Reliability Rating
+          </div>
+        </div>
+
+        <!-- Bento Card 2 -->
+        <div class="glass-card p-8 flex flex-col justify-between hover:border-white/[0.2] transition duration-300">
+          <div>
+            <div class="w-10 h-10 rounded-2xl bg-white/[0.06] border border-white/[0.1] flex items-center justify-center text-lg mb-6">
+              ⚡
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">Instant Latency.</h3>
+            <p class="text-sm text-[#86868b] leading-relaxed">
+              Executes inside the browser document in sub-milliseconds. No remote network hops, webhook retries, or rate limits.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-[#86868b] font-mono">
+            &lt; 5ms Client Execution
+          </div>
+        </div>
+
+        <!-- Bento Card 3 -->
+        <div class="glass-card p-8 flex flex-col justify-between hover:border-white/[0.2] transition duration-300">
+          <div>
+            <div class="w-10 h-10 rounded-2xl bg-white/[0.06] border border-white/[0.1] flex items-center justify-center text-lg mb-6">
+              🔒
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-3 tracking-tight">Private by Design.</h3>
+            <p class="text-sm text-[#86868b] leading-relaxed">
+              Runs directly within the user's active session. No API tokens or passwords ever leave the user's local browser window.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-white/[0.06] text-xs text-[#86868b] font-mono">
+            Zero-Credential Sharing
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Adoption Quickstart -->
+  <section id="quickstart" class="py-28 border-t border-white/[0.08] bg-black">
+    <div class="max-w-4xl mx-auto px-6">
+      
+      <div class="text-center mb-16">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[#86868b] mb-3">5-Minute Integration</p>
+        <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+          Add WebMCP to your site.
+        </h2>
+        <p class="text-base text-[#86868b] max-w-xl mx-auto">
+          Drop in the standard declaration. Browser agents discover and invoke your tools automatically.
+        </p>
+      </div>
+
+      <!-- Code Showcase with Apple Segmented Control -->
+      <div class="glass-card p-6 sm:p-8 border border-white/[0.12]">
+        
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/[0.08]">
+          <div class="inline-flex p-1 rounded-xl bg-white/[0.06] border border-white/[0.08] text-xs">
+            <button onclick="switchTab('html')" id="tab-html" class="px-4 py-1.5 rounded-lg bg-white text-black font-medium transition shadow-sm">
+              HTML / Meta
+            </button>
+            <button onclick="switchTab('js')" id="tab-js" class="px-4 py-1.5 rounded-lg text-[#86868b] hover:text-white font-medium transition">
+              Vanilla JavaScript
+            </button>
+            <button onclick="switchTab('react')" id="tab-react" class="px-4 py-1.5 rounded-lg text-[#86868b] hover:text-white font-medium transition">
+              React / Next.js Hook
+            </button>
+          </div>
+
+          <button onclick="copyCode()" id="copy-btn" class="text-xs text-[#86868b] hover:text-white transition flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+            </svg>
+            <span id="copy-text">Copy</span>
+          </button>
+        </div>
+
+        <!-- Code Block Content -->
+        <div class="code-font text-xs text-[#d1d1d6] leading-relaxed overflow-x-auto bg-black/60 p-5 rounded-2xl border border-white/[0.06]">
+          <pre id="code-content"><code>&lt;!-- 1. Declare tool capabilities in your &lt;head&gt; --&gt;
+&lt;meta name="webmcp-support" content="v1.0"&gt;
+&lt;meta name="webmcp-tools" content="search_products, create_order"&gt;
+
+&lt;!-- 2. Expose the native execution handler --&gt;
+&lt;script&gt;
+  window.webmcp = window.webmcp || { tools: [] };
+
+  window.webmcp.tools.push({
+    name: "search_products",
+    description: "Search in-stock products by query and maximum budget",
+    parameters: {
+      type: "object",
+      properties: {
+        query: { type: "string" },
+        maxPrice: { type: "number" }
+      },
+      required: ["query"]
+    },
+    handler: async ({ query, maxPrice }) => {
+      const results = await window.app.catalog.search({ query, maxPrice });
+      return { count: results.length, items: results };
+    }
+  });
+
+  // Signal ready state to AI browser agents
+  window.dispatchEvent(new CustomEvent("webmcp:ready"));
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+    <!-- Interactive Real Inspector (Spotlight Style) -->
+  <section id="inspector" class="py-28 border-t border-white/[0.08] bg-[#050505]">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      
+      <p class="text-xs font-semibold uppercase tracking-widest text-[#86868b] mb-3">Live Diagnostic Utility</p>
+      <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+        WebMCP Inspector.
+      </h2>
+      <p class="text-base text-[#86868b] mb-8 max-w-lg mx-auto">
+        Test any live website to verify if it has declared WebMCP tools for AI agents.
+      </p>
+
+      <!-- Quick Test Presets -->
+      <div class="flex items-center justify-center gap-3 text-xs mb-6 text-[#86868b]">
+        <span>Try live demo:</span>
+        <button onclick="setInspectUrl('https://webmcp.dev')" class="text-white hover:text-[#2997ff] underline transition">webmcp.dev (Active)</button>
+        <span>•</span>
+        <button onclick="setInspectUrl('https://example.com')" class="text-white hover:text-[#2997ff] underline transition">example.com (None)</button>
+      </div>
+
+      <!-- Apple Spotlight Bar -->
+      <div class="glass-card p-2 sm:p-3 border border-white/[0.12] flex items-center gap-3 shadow-2xl mb-8">
+        <div class="pl-3 text-[#86868b]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+        <input id="inspectInput" type="url" placeholder="https://webmcp.dev" value="https://webmcp.dev" class="w-full bg-transparent border-none text-sm text-white placeholder-[#86868b] focus:outline-none py-2 font-normal">
+        <button onclick="runRealInspector()" id="inspectBtn" class="px-5 py-2 rounded-full bg-white text-black hover:bg-[#e5e5ea] transition text-xs font-medium shrink-0 flex items-center gap-1.5">
+          <span>Inspect</span>
+        </button>
+      </div>
+
+      <!-- Inspector Output Panel -->
+      <div id="inspectorOutput" class="glass-card p-6 border border-white/[0.1] text-left text-xs code-font space-y-4">
+        <div class="flex items-center justify-between border-b border-white/[0.08] pb-3">
+          <span class="text-[#86868b]">Target: <span id="targetUrl" class="text-white">https://webmcp.dev</span></span>
+          <span id="inspectBadge" class="inline-flex items-center gap-1.5 text-emerald-400 font-sans font-medium">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Ready to Test
+          </span>
+        </div>
+        <div id="inspectorDetails" class="text-[#a1a1a6] space-y-2">
+          <p class="text-[#86868b]">Enter a website URL above and click <strong>Inspect</strong> to run real-time WebMCP detection.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Community Badge -->
+  <section class="py-24 border-t border-white/[0.08] bg-black text-center">
+    <div class="max-w-2xl mx-auto px-6">
+      <p class="text-xs font-semibold uppercase tracking-widest text-[#86868b] mb-3">Ecosystem</p>
+      <h2 class="text-3xl font-bold text-white mb-4 tracking-tight">Display the WebMCP Badge.</h2>
+      <p class="text-sm text-[#86868b] mb-8 leading-relaxed">
+        Let agents and users know your web application is fully WebMCP compatible.
+      </p>
+
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.06] border border-white/[0.12] text-xs text-white font-medium mb-6 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-[#2997ff]"></span>
+        <span>WebMCP Supported</span>
+      </div>
+
+      <div class="bg-black/60 p-3 rounded-xl border border-white/[0.08] text-xs text-[#a1a1a6] code-font max-w-lg mx-auto">
+        <code>[![WebMCP Supported](https://getwebmcp.dev/badge.svg)](https://getwebmcp.dev)</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-28 border-t border-white/[0.08] bg-[#050505]">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[#86868b] mb-3">Questions & Answers</p>
+        <h2 class="text-4xl font-bold tracking-tight text-white">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="space-y-6 text-left">
+        <div class="glass-card p-6 border border-white/[0.08]">
+          <h4 class="text-base font-semibold text-white mb-2 tracking-tight">What is WebMCP?</h4>
+          <p class="text-sm text-[#86868b] leading-relaxed">
+            WebMCP adapts the Model Context Protocol directly for browser web pages. Instead of requiring server-side daemon installations, front-end web applications declare structured tools that AI browser agents can discover and call on behalf of the user.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 border border-white/[0.08]">
+          <h4 class="text-base font-semibold text-white mb-2 tracking-tight">How is WebMCP different from server MCP?</h4>
+          <p class="text-sm text-[#86868b] leading-relaxed">
+            Server MCP connects LLMs to local filesystems and backend databases. WebMCP runs inside the client DOM with full access to user authentication, cookies, and live front-end application state.
+          </p>
+        </div>
+
+        <div class="glass-card p-6 border border-white/[0.08]">
+          <h4 class="text-base font-semibold text-white mb-2 tracking-tight">Does WebMCP require any browser extensions to work?</h4>
+          <p class="text-sm text-[#86868b] leading-relaxed">
+            For websites, no — any standard web application can expose WebMCP tools with simple JavaScript. For users, any agent (like Dassi, Claude Computer Use, or custom AI extensions) can call WebMCP tools out of the box.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apple Minimalist Footer -->
+  <footer class="py-12 border-t border-white/[0.08] bg-black text-xs text-[#86868b]">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© 2026 WebMCP Community. Open standard for web agent interoperability.</p>
+      <div class="flex space-x-6">
+        <a href="#overview" class="hover:text-white transition">Overview</a>
+        <a href="#quickstart" class="hover:text-white transition">Adoption</a>
+        <a href="#inspector" class="hover:text-white transition">Inspector</a>
+        <a href="https://github.com/getwebmcp" class="hover:text-white transition">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  
+  <!-- Hidden Templates for Code Snippets (Zero JS escaping issues) -->
+  <template id="snippet-html">&lt;!-- 1. Include the official WebMCP library --&gt;
+&lt;script src="https://unpkg.com/@jason.today/webmcp@latest/dist/webmcp.js"&gt;&lt;/script&gt;
+
+&lt;!-- 2. Register tools, prompts, or resources --&gt;
+&lt;script&gt;
+  const mcp = new WebMCP();
+
+  // Register an interactive tool for AI agents
+  mcp.registerTool(
+    "search_products",
+    "Search in-stock products with pricing and filters",
+    {
+      type: "object",
+      properties: {
+        query: { type: "string", description: "Search keyword" },
+        maxPrice: { type: "number", description: "Max budget in USD" }
+      },
+      required: ["query"]
+    },
+    async function(args) {
+      const results = await window.app.catalog.search(args);
+      return {
+        content: [{ type: "text", text: JSON.stringify(results) }]
+      };
+    }
+  );
+&lt;/script&gt;</template>
+
+  <template id="snippet-js">// Vanilla JavaScript WebMCP Setup
+import { WebMCP } from '@jason.today/webmcp';
+
+const mcp = new WebMCP({
+  position: 'bottom-right',
+  color: '#0071e3'
+});
+
+// Register Tool
+mcp.registerTool(
+  'calculate_quote',
+  'Calculate real-time pricing quote',
+  {
+    type: 'object',
+    properties: {
+      plan: { type: 'string', enum: ['starter', 'pro', 'enterprise'] },
+      seats: { type: 'number' }
+    },
+    required: ['plan', 'seats']
+  },
+  async (args) => {
+    const total = computeQuote(args.plan, args.seats);
+    return { content: [{ type: 'text', text: `Quote: ${total}/mo` }] };
+  }
+);</template>
+
+  <template id="snippet-react">// React / Next.js Custom Hook for WebMCP
+import { useEffect } from 'react';
+
+export function useWebMCPTool({ name, description, parameters, handler }) {
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Ensure WebMCP instance exists
+    window.webMCP = window.webMCP || new window.WebMCP();
+    
+    // Register tool
+    window.webMCP.registerTool(name, description, parameters, handler);
+  }, [name, description]);
+}</template>
+
+      <script>
+    function switchTab(tab) {
+      document.querySelectorAll('#quickstart button[id^="tab-"]').forEach(b => {
+        b.className = "px-4 py-1.5 rounded-lg text-[#86868b] hover:text-white font-medium transition";
+      });
+      const activeBtn = document.getElementById('tab-' + tab);
+      if (activeBtn) {
+        activeBtn.className = "px-4 py-1.5 rounded-lg bg-white text-black font-medium transition shadow-sm";
+      }
+      const tpl = document.getElementById('snippet-' + tab);
+      if (tpl) {
+        document.getElementById('code-content').innerHTML = '<code>' + tpl.innerHTML + '</code>';
+      }
+    }
+
+    function copyCode() {
+      const text = document.getElementById('code-content').innerText;
+      navigator.clipboard.writeText(text);
+      document.getElementById('copy-text').textContent = 'Copied!';
+      setTimeout(() => {
+        document.getElementById('copy-text').textContent = 'Copy';
+      }, 2000);
+    }
+
+    function setInspectUrl(url) {
+      document.getElementById('inspectInput').value = url;
+      runRealInspector();
+    }
+
+    async function runRealInspector() {
+      let rawUrl = document.getElementById('inspectInput').value.trim();
+      if (!rawUrl) rawUrl = 'https://webmcp.dev';
+      if (!rawUrl.startsWith('http://') && !rawUrl.startsWith('https://')) {
+        rawUrl = 'https://' + rawUrl;
+      }
+      document.getElementById('inspectInput').value = rawUrl;
+      document.getElementById('targetUrl').textContent = rawUrl;
+
+      const btn = document.getElementById('inspectBtn');
+      const badge = document.getElementById('inspectBadge');
+      const details = document.getElementById('inspectorDetails');
+
+      btn.disabled = true;
+      btn.innerHTML = '<span class="animate-spin mr-1">↻</span> Checking...';
+      badge.className = "inline-flex items-center gap-1.5 text-amber-400 font-sans font-medium";
+      badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> Scanning Page...';
+      details.innerHTML = '<p class="text-[#86868b]">Fetching page and analyzing DOM for WebMCP / Model Context Protocol declarations...</p>';
+
+      try {
+        // Fetch via CORS-safe proxy
+        const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(rawUrl);
+        const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(8000) });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        const html = data.contents || '';
+
+        // Clean string and regex detection
+        const lowerHtml = html.toLowerCase();
+        const hasWebmcpScript = lowerHtml.includes('webmcp') || lowerHtml.includes('@jason.today') || html.includes('new WebMCP');
+        const hasMetaTag = lowerHtml.includes('name="webmcp') || lowerHtml.includes("name='webmcp");
+        
+        // Find registered tools
+        const toolMatches = [];
+        const toolRegex = /registerTool\s*\(\s*['"]([^'"]+)['"]/g;
+        let match;
+        while ((match = toolRegex.exec(html)) !== null) {
+          toolMatches.push(match[1]);
+        }
+
+        const promptMatches = [];
+        const promptRegex = /registerPrompt\s*\(\s*['"]([^'"]+)['"]/g;
+        while ((match = promptRegex.exec(html)) !== null) {
+          promptMatches.push(match[1]);
+        }
+
+        const resourceMatches = [];
+        const resourceRegex = /registerResource\s*\(\s*['"]([^'"]+)['"]/g;
+        while ((match = resourceRegex.exec(html)) !== null) {
+          resourceMatches.push(match[1]);
+        }
+
+        const uniqueTools = Array.from(new Set(toolMatches));
+        const uniquePrompts = Array.from(new Set(promptMatches));
+        const uniqueResources = Array.from(new Set(resourceMatches));
+
+        const isCompliant = hasWebmcpScript || hasMetaTag || uniqueTools.length > 0;
+
+        if (isCompliant) {
+          badge.className = "inline-flex items-center gap-1.5 text-emerald-400 font-sans font-medium";
+          badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-400"></span> WebMCP Detected';
+          
+          let listHtml = '<div class="space-y-2 pt-1">';
+          listHtml += '<p class="text-white font-sans font-semibold">✓ Detected WebMCP Integration on target</p>';
+          
+          if (uniqueTools.length > 0) {
+            listHtml += '<p class="text-[#86868b] font-sans font-medium mt-2">Discovered Tools (' + uniqueTools.length + '):</p>';
+            uniqueTools.forEach(t => {
+              listHtml += '<div class="p-2.5 bg-black/50 rounded-lg border border-white/[0.06] flex items-center justify-between"><span class="text-[#2997ff]">● ' + t + '</span><span class="text-[10px] text-emerald-400 font-sans bg-emerald-500/10 px-2 py-0.5 rounded">Callable Tool</span></div>';
+            });
+          }
+
+          if (uniquePrompts.length > 0) {
+            listHtml += '<p class="text-[#86868b] font-sans font-medium mt-2">Discovered Prompts (' + uniquePrompts.length + '):</p>';
+            uniquePrompts.forEach(p => {
+              listHtml += '<div class="p-2.5 bg-black/50 rounded-lg border border-white/[0.06] flex items-center justify-between"><span class="text-purple-400">● ' + p + '</span><span class="text-[10px] text-purple-400 font-sans bg-purple-500/10 px-2 py-0.5 rounded">Prompt Template</span></div>';
+            });
+          }
+
+          if (uniqueResources.length > 0) {
+            listHtml += '<p class="text-[#86868b] font-sans font-medium mt-2">Discovered Resources (' + uniqueResources.length + '):</p>';
+            uniqueResources.forEach(r => {
+              listHtml += '<div class="p-2.5 bg-black/50 rounded-lg border border-white/[0.06] flex items-center justify-between"><span class="text-amber-300">● ' + r + '</span><span class="text-[10px] text-amber-300 font-sans bg-amber-500/10 px-2 py-0.5 rounded">Context Resource</span></div>';
+            });
+          }
+
+          if (uniqueTools.length === 0 && uniquePrompts.length === 0 && uniqueResources.length === 0) {
+            listHtml += '<p class="text-[#a1a1a6]">WebMCP script tag was found, but tools may be registered dynamically after initial page load.</p>';
+          }
+
+          listHtml += '</div>';
+          details.innerHTML = listHtml;
+        } else {
+          // Negative result: clean diagnostic
+          badge.className = "inline-flex items-center gap-1.5 text-rose-400 font-sans font-medium";
+          badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Not WebMCP Compatible';
+          
+          details.innerHTML = `
+            <div class="space-y-3 pt-1">
+              <p class="text-rose-300 font-sans font-semibold">✗ No WebMCP declarations found on this page.</p>
+              <div class="p-3 bg-rose-500/10 rounded-xl border border-rose-500/20 text-[#a1a1a6] space-y-1">
+                <p>• No WebMCP library tag (&lt;script src="webmcp.js"&gt;) detected.</p>
+                <p>• No registerTool() or page-declared tools found.</p>
+                <p>• AI browser agents must fall back to visual scraping or text inputs on this page.</p>
+              </div>
+              <p class="text-[#86868b] font-sans">
+                💡 Want to make this site AI-ready? See the <a href="#quickstart" class="text-white underline">5-minute adoption guide</a> above.
+              </p>
+            </div>
+          `;
+        }
+
+      } catch (err) {
+        badge.className = "inline-flex items-center gap-1.5 text-rose-400 font-sans font-medium";
+        badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Inspection Failed';
+        details.innerHTML = '<p class="text-rose-400">Unable to reach the destination URL directly or via proxy: ' + err.message + '. Please check the URL and try again.</p>';
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<span>Inspect</span>';
+      }
+    }
+  </script>
+</body>
+</html>
