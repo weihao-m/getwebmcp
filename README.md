@@ -103,7 +103,7 @@ if (typeof document !== 'undefined' && !document.modelContext) {
 
 WebMCP is supported out-of-the-box by modern browser agent runtimes:
 
-- **Omnify Dassi:** Built-in `tool.webmcp` engine that discovers and invokes `document.modelContext` tools in under 5ms with zero DOM scraping.
+- **Dassi AI:** Built-in `tool.webmcp` engine that discovers and invokes `document.modelContext` tools in under 5ms with zero DOM scraping.
 - **Claude Desktop:** MCP client integration for local agent-driven web actuation.
 - **W3C WebML Working Group:** Standard proposal led by Google and Microsoft engineers.
 
