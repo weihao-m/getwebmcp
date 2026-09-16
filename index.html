@@ -205,7 +205,7 @@
         W3C Spec ↗
       </a>
       <a href="#quickstart" class="text-xs font-medium px-3.5 py-1.5 rounded-full bg-white text-black hover:bg-[#e5e5ea] transition shadow-sm">
-        Adopt Now
+        Get Started
       </a>
     </div>
   </nav>
@@ -523,64 +523,111 @@ execute({ description }) {
         </div>
       </div>
 
-      <!-- Adopt with Dassi Callout Banner -->
-      <div class="glass-card p-8 sm:p-10 border border-white/[0.12] bg-gradient-to-r from-black via-[#121214] to-black relative overflow-hidden text-left">
-        <div class="max-w-2xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-[#2997ff] text-xs font-medium mb-4">
-            Automated Adoption
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 tracking-tight">
-            Let Dassi adapt your website to WebMCP.
-          </h3>
-          <p class="text-sm text-[#86868b] leading-relaxed mb-6">
-            Don't know where to start? Ask Dassi to inspect your web application. Dassi analyzes your UI elements, forms, and client state, and automatically drafts typed <code class="text-white">document.modelContext.registerTool()</code> definitions ready to copy into your codebase.
-          </p>
-          <div class="flex flex-wrap items-center gap-4 text-xs font-mono">
-            <span class="px-3 py-1.5 rounded-lg bg-white/[0.06] text-[#a1a1a6] border border-white/[0.08]">
-              "Dassi, generate WebMCP tool definitions for my website"
-            </span>
-          </div>
-        </div>
       </div>
-
-    </div>
   </section>
 
-  <!-- Interactive Adoption Quickstart -->
+    <!-- Unified Adoption & Quickstart Section -->
   <section id="quickstart" class="py-28 border-t border-white/[0.08] bg-black">
-    <div class="max-w-4xl mx-auto px-6">
+    <div class="max-w-5xl mx-auto px-6">
       
-      <div class="text-center mb-16">
-        <p class="text-xs font-semibold uppercase tracking-widest text-[#86868b] mb-3">Implementation Standard</p>
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="text-xs font-semibold uppercase tracking-widest text-[#86868b] mb-3">Adoption & Quickstart</p>
         <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-          How to Adopt WebMCP in 3 Steps.
+          Three Ways to Implement WebMCP.
         </h2>
-        <p class="text-base text-[#86868b] max-w-xl mx-auto">
-          Implement the official W3C specification in your front-end codebase today.
+        <p class="text-base text-[#86868b]">
+          Choose the adoption path that best fits your workflow:
         </p>
       </div>
 
-      <!-- Code Showcase with Apple Segmented Control -->
-      <div class="glass-card p-6 sm:p-8 border border-white/[0.12]">
+      <!-- 3-Pathway Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         
-        <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/[0.08]">
+        <!-- Path 1: Coding Agent 1-Liner -->
+        <div class="glass-card p-6 border border-white/[0.12] flex flex-col justify-between hover:border-purple-500/40 transition">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-xs font-medium text-purple-300 mb-4">
+              <span>Path 1 • For AI Coding Agents</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2 tracking-tight">1-Line Setup.</h3>
+            <p class="text-xs text-[#86868b] leading-relaxed mb-4">
+              Using <strong>Cursor</strong>, <strong>Claude Code</strong>, or <strong>Copilot</strong>? Paste this instruction to have your agent implement WebMCP tools across your repo:
+            </p>
+            <div class="bg-black/80 p-3 rounded-xl border border-white/[0.1] text-xs code-font text-[#2997ff] break-all select-all mb-2">
+              <span id="agent-prompt">Read https://getwebmcp.dev/agent.md and implement WebMCP for this codebase</span>
+            </div>
+          </div>
+          <button onclick="copyPrompt('agent-prompt')" id="agent-prompt-btn" class="w-full py-2 rounded-lg bg-white/10 hover:bg-white text-white hover:text-black transition text-xs font-medium mt-4">
+            Copy Prompt
+          </button>
+        </div>
+
+        <!-- Path 2: Manual Code -->
+        <div class="glass-card p-6 border border-white/[0.12] flex flex-col justify-between hover:border-white/[0.25] transition">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.06] border border-white/[0.1] text-xs font-medium text-white mb-4">
+              <span>Path 2 • Write Code Manually</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2 tracking-tight">Standard Recipes.</h3>
+            <p class="text-xs text-[#86868b] leading-relaxed mb-4">
+              Writing the integration yourself? Use our interactive code tabs below for W3C Standard, React Hooks, and Polyfills.
+            </p>
+            <div class="p-3 bg-black/60 rounded-xl border border-white/[0.06] text-xs text-[#a1a1a6] space-y-1">
+              <p>• document.modelContext</p>
+              <p>• Lifecycle with AbortSignal</p>
+              <p>• React / Next.js hooks</p>
+            </div>
+          </div>
+          <a href="#manual-recipes" class="w-full py-2 rounded-lg bg-white/10 hover:bg-white text-white hover:text-black transition text-xs font-medium mt-4 text-center">
+            View Code Tabs ↓
+          </a>
+        </div>
+
+        <!-- Path 3: Dassi AI 1-Click -->
+        <div class="glass-card p-6 border border-white/[0.12] flex flex-col justify-between hover:border-[#2997ff]/40 transition">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-xs font-medium text-sky-300 mb-4">
+              <span>Path 3 • 1-Click with Dassi AI</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2 tracking-tight">Live & Non-Git Sites.</h3>
+            <p class="text-xs text-[#86868b] leading-relaxed mb-4">
+              Running WordPress, Shopify, Webflow, or a live app? Have Dassi AI inspect your page and setup WebMCP tools automatically.
+            </p>
+            <div class="p-3 bg-black/60 rounded-xl border border-white/[0.06] text-xs text-[#a1a1a6] space-y-1">
+              <p>• Automated DOM inspection</p>
+              <p>• Zero code changes needed</p>
+              <p>• In-browser tool adapter</p>
+            </div>
+          </div>
+          <a href="https://dassi.ai/?utm_source=getwebmcp&utm_medium=referral&utm_campaign=webmcp_adoption" target="_blank" class="w-full py-2 rounded-lg bg-white text-black hover:bg-[#e5e5ea] transition text-xs font-semibold mt-4 text-center flex items-center justify-center gap-1.5">
+            <span>⚡ Setup with Dassi AI</span>
+            <span class="text-[10px] text-[#86868b]">↗</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Interactive Code Showcase (Anchored for Path 2) -->
+      <div id="manual-recipes" class="glass-card p-6 sm:p-8 border border-white/[0.12]">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/[0.08]">
           <div class="inline-flex p-1 rounded-xl bg-white/[0.06] border border-white/[0.08] text-xs">
             <button onclick="switchTab('w3c')" id="tab-w3c" class="px-4 py-1.5 rounded-lg bg-white text-black font-medium transition shadow-sm">
-              Standard (document.modelContext)
+              W3C Standard
             </button>
             <button onclick="switchTab('react')" id="tab-react" class="px-4 py-1.5 rounded-lg text-[#86868b] hover:text-white font-medium transition">
               React / Next.js Hook
             </button>
             <button onclick="switchTab('polyfill')" id="tab-polyfill" class="px-4 py-1.5 rounded-lg text-[#86868b] hover:text-white font-medium transition">
-              Universal Shim / Polyfill
+              Universal Polyfill
             </button>
           </div>
 
-          <button onclick="copyCode()" id="copy-btn" class="text-xs text-[#86868b] hover:text-white transition flex items-center gap-1.5">
+          <button onclick="copyCode()" id="copy-btn" class="text-xs text-[#86868b] hover:text-white transition flex items-center gap-1.5 self-end sm:self-auto">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
             </svg>
-            <span id="copy-text">Copy</span>
+            <span id="copy-text">Copy Code</span>
           </button>
         </div>
 
